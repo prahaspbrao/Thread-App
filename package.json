@@ -1,0 +1,32 @@
+{
+  "name": "threadapp",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000T\u0000h\u0000r\u0000e\u0000a\u0000d\u0000-\u0000A\u0000p\u0000p\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node build/index.js",
+    "dev": "tsc-watch --onSuccess \"npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prahaspbrao/Thread-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prahaspbrao/Thread-App/issues"
+  },
+  "homepage": "https://github.com/prahaspbrao/Thread-App#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "tsc-watch": "^7.2.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.2.0",
+    "@as-integrations/express5": "^1.1.2",
+    "express": "^5.2.1",
+    "graphql": "^16.12.0"
+  }
+}
