@@ -1,17 +1,19 @@
-version: "3.4"
+
+
+version: '3.8'
 
 services:
-  postgres:
-    container_name: thread-db
-    image: postgres:15
+  db:
+    container_name: parkngo_db
+    image: postgres
+    restart: always
     ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - 5432:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: threads
       POSTGRES_PASSWORD: threads
-
+    volumes:
+      - db_data_parkngo:/var/lib/postgresql/data
 volumes:
-  postgres_data:
+  db_data_parkngo:
