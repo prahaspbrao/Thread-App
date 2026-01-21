@@ -1,19 +1,43 @@
-
-
-version: '3.8'
-
 services:
-  db:
-    container_name: parkngo_db
-    image: postgres
-    restart: always
+  postgres:
+    image: postgres:15
+    container_name: thread-db
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_DB: threads
       POSTGRES_PASSWORD: threads
+      POSTGRES_DB: threads
     volumes:
-      - db_data_parkngo:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+
+  prisma:
+    image: node:20
+    container_name: thread-prisma
+    working_dir: /app
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://app_user:app_pass@postgres:5432/threads
+    command: sleep infinity
+
+  app:
+    image: node:20
+    container_name: thread-app
+    working_dir: /app
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://app_user:app_pass@postgres:5432/threads
+      PORT: 8000
+    ports:
+      - "8000:8000"
+    command: sh -c "npm install && npm run build && npm start"
+
+
 volumes:
-  db_data_parkngo:
+  postgres_data:

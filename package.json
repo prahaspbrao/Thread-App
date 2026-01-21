@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node build/index.js",
-    "dev": "tsc-watch --onSuccess \"npm start\""
+    "dev": "tsc -w",
+    "build": "tsc",
+    "start": "node build/index.js"
   },
   "repository": {
     "type": "git",
